@@ -1,14 +1,17 @@
-function get(url, success, fail) {
-    let httpRequest = new XMLHttpRequest();
-    httpRequest.open('GET', url);
-    httpRequest.onload = function() {
-        if (httpRequest.status === 200) {
-            success(httpRequest.responseText);
-        } else {
-            fail(httpRequest.status);
+function get(url) {
+    return new Promise( function(resolve, reject){
+        let httpRequest = new XMLHttpRequest();
+        httpRequest.open('GET', url);
+        httpRequest.onload = function() {
+            if (httpRequest.status === 200) {
+                resolve(httpRequest.responseText);
+            } else {
+                reject(Error((httpRequest.status)));
+            }
         }
-    }
-    httpRequest.send();
+        httpRequest.send();
+    });
+    
 };
 
 function successHandler(data) {
@@ -43,7 +46,7 @@ function tempToF(kelvin) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    const apiKey = ''; // ADD YOUR API KEY BETWEEN THE QUOTES
+    const apiKey = '8017146aaa82ae056dcc283da6da59ee'; // ADD YOUR API KEY BETWEEN THE QUOTES
 //    const apiKey = '';
     const url = 'https://api.openweathermap.org/data/2.5/weather?q=los+angeles&APPID=' + apiKey;
     get(url, successHandler, failHandler);
