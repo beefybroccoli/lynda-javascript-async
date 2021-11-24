@@ -56,12 +56,18 @@ function tempToF(kelvin) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  const apiKey = '8017146aaa82ae056dcc283da6da59ee'; // ADD YOUR API KEY BETWEEN THE QUOTES
-  //const apiKey = '';
+  // const apiKey = '8017146aaa82ae056dcc283da6da59ee'; // ADD YOUR API KEY BETWEEN THE QUOTES
+  const apiKey = '';
 
   const url =
     'https://api.openweathermap.org/data/2.5/weather?q=los+angeles&APPID=' +
     apiKey;
-  // get(url, successHandler, failHandler);
+    get(url)
+      .then(function(response){
+        successHandler(response);
+      })
+      .catch(function(error){
+        console.log(error);
+      })
   console.log(get(url));
 });
