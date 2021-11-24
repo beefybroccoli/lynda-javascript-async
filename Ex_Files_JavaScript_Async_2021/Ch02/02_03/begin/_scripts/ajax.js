@@ -56,7 +56,7 @@ function tempToF(kelvin) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  const apiKey = ''; // ADD YOUR API KEY BETWEEN THE QUOTES
+  const apiKey = '8017146aaa82ae056dcc283da6da59ee'; // ADD YOUR API KEY BETWEEN THE QUOTES
   //const apiKey = '';
 
   const url =
